@@ -32,9 +32,9 @@ def extract_soma(data_path, num_files):
         n = pd.read_csv(file_path, nrows = 1)
         
         #convert to 25x25x25 resolution
-        soma_coords = [n["x"][0] * 25,
-                       n["y"][0] * 25,
-                       n["z"][0] * 25]
+        soma_coords = [n["x"][0]* 25,
+                       n["y"][0]* 25,
+                       n["z"][0]* 25]
     
         all_soma.append(soma_coords)
         
@@ -42,3 +42,20 @@ def extract_soma(data_path, num_files):
     all_soma = np.asarray(all_soma, dtype=np.float32)
     
     return(all_soma)
+
+def get_coords_from_aws(dataset):
+    
+    all_coords = []
+    
+    for index, row in dataset.iterrows():
+        x = row["x_ccf"] * 1000
+        y = row["y_ccf"] * 1000
+        z = row["z_ccf"] * 1000
+        
+        coords = [x,y,z]
+        
+        all_coords.append(coords)
+
+    all_coords = np.asarray(all_coords, dtype=np.float32)
+    
+    return(all_coords)

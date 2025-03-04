@@ -28,13 +28,11 @@ import snr_functions as snr
 
 data_path = "data/ent_data_20241022/ENT_NO1057/"
 num_files = 19
-
 all_soma_1 = snr.extract_soma(data_path, num_files)
 
 #get soma coordinates for all neurons in brain 1056
 data_path_2 = "data/ent_data_20241112/ENT_NO1056/"
 num_files_2 = 41
-
 all_soma_2 = snr.extract_soma(data_path_2, num_files_2)
 
 #create a Points actor
